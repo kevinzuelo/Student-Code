@@ -24,7 +24,12 @@ public class Exercise06_ElectricBill {
     calculateElectricBill(110) ➔ 22.5
      */
     public double calculateElectricBill(double unitsUsed) {
-        return 0;
+        if(unitsUsed > EXCESS_UNITS_LIMIT) {
+            return (BASE_RATE * EXCESS_UNITS_LIMIT) + (EXCESS_RATE * (unitsUsed - EXCESS_UNITS_LIMIT));
+        }
+        else {
+            return BASE_RATE * unitsUsed;
+        }
     }
 
     /*
@@ -39,7 +44,12 @@ public class Exercise06_ElectricBill {
     calculateElectricBill(110, true) ➔ 21.375
      */
     public double calculateElectricBill(double unitsUsed, boolean hasRenewableEnergy) {
-        return 0;
+        if(hasRenewableEnergy) {
+            return calculateElectricBill(unitsUsed) * DISCOUNT_FACTOR;
+        }
+        else {
+            return calculateElectricBill(unitsUsed);
+        }
     }
 
     /*
@@ -63,6 +73,15 @@ public class Exercise06_ElectricBill {
     calculateElectricBill(110, 120) ➔ -2.0
      */
     public double calculateElectricBill(double unitsUsed, double unitsReturned) {
-        return 0;
+        double netUsage = unitsUsed - unitsReturned;
+        if(unitsReturned > unitsUsed) {
+            return calculateElectricBill(netUsage);
+        }
+        else if(unitsReturned != 0) {
+           return calculateElectricBill(netUsage, true);
+        }
+        else {
+            return calculateElectricBill(unitsUsed);
+        }
     }
 }
