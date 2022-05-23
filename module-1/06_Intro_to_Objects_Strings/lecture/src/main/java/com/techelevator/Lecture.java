@@ -4,6 +4,9 @@ public class Lecture {
 
 	public static void main(String[] args) {
 
+		Album fred = new Album("Dark side of the Moon ", new String[] {"Pink Floyd"}, null, 1969, "Rock");
+		System.out.println(fred.albumName + "was put out in " + fred.releaseYear);
+
 		System.out.println("************************************");
 		System.out.println("****** MAKING A STRING OBJECT ******");
 		System.out.println("************************************");
@@ -15,13 +18,27 @@ public class Lecture {
 
 		/* create an new instance of String using a literal */
 
-		
+		String greeting = "Hello World";
+		System.out.println(greeting);
+
+
 		System.out.println();
 		System.out.println("******************************");
 		System.out.println("****** MEMBER METHODS ******");
 		System.out.println("******************************");
 		System.out.println();
 
+		String name = "Tyrone";
+		char first = name.charAt(0);
+		char last = name.charAt(name.length()-1);
+		System.out.print(first);
+		System.out.println(last);
+
+		String javaString = "This is Java";
+		boolean containsJava = javaString.contains("Java");
+		if(containsJava) {
+			System.out.println("This does contain Java");
+		}
 
 		/* Other commonly used methods:
 		 *
