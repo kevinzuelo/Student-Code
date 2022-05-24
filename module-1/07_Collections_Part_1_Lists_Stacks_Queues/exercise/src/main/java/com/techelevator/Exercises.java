@@ -16,7 +16,12 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
+		List<String> myNewList = new ArrayList<>();
+
+		for(String string : stringArray) {
+			myNewList.add(string);
+		}
+		return myNewList;
 	}
 
 	/*
@@ -26,7 +31,12 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+		String[] myNewArray = new String[stringList.size()];
+
+		for (int i = 0; i < stringList.size(); i++) {
+			myNewArray[i] = stringList.get(i);
+		}
+		return myNewArray;
 	}
 
 	/*
@@ -37,7 +47,14 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+		List<String> myNewList = new ArrayList<>();
+
+		for(String string : stringArray) {
+			if(string.length() != 4 ) {
+				myNewList.add(string);
+			}
+		}
+		return myNewList;
 	}
 
 	/*
@@ -47,7 +64,13 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+		List<Double> myNewList = new ArrayList<>();
+
+		for (int num : intArray) {
+
+			myNewList.add((double)num / 2);
+		}
+		return myNewList;
 	}
 
 	/*
@@ -57,7 +80,14 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 81238
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+		int largestNum = 0;
+
+		for(int num : integerList) {
+			if (num > largestNum) {
+				largestNum = num;
+			}
+		}
+		return largestNum;
 	}
 
 	/*
@@ -67,7 +97,15 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+		List<Integer> myNewList = new ArrayList<>();
+
+		for(int num : integerArray) {
+			if(num % 2 != 0) {
+				myNewList.add(num);
+			}
+		}
+		return myNewList;
+
 	}
 
 	/*
@@ -78,6 +116,17 @@ public class Exercises {
 	 foundIntTwice( [9, 9, 44, 2, 88, 9], 9) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
+		int foundCount = 0;
+
+		for (int num : integerList) {
+			if (num == intToFind) {
+				foundCount++;
+			}
+		}
+
+		if(foundCount >= 2) {
+			return true;
+		}
 		return false;
 	}
 
@@ -94,7 +143,23 @@ public class Exercises {
 	HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		List<String> myNewList = new ArrayList<>();
+
+		for (int num : integerArray) {
+			if(num % 5 == 0 && num % 3 == 0) {
+				myNewList.add("FizzBuzz");
+			}
+			else if (num % 5 == 0) {
+				myNewList.add("Buzz");
+			}
+			else if (num % 3 == 0) {
+				myNewList.add("Fizz");
+			}
+			else {
+				myNewList.add(Integer.toString(num));
+			}
+		}
+		return myNewList;
 	}
 
 	/*
@@ -105,7 +170,34 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
-	}
+		List<Integer> myNewList = new ArrayList<>();
+		int index = 0;
 
+		if(listOne.size() > listTwo.size()) {
+			for(int num : listOne) {
+				if (myNewList.size() < listTwo.size() * 2) {
+					myNewList.add(num);
+					myNewList.add(listTwo.get(index));
+					index++;
+				}
+			}
+			myNewList.addAll(listOne.subList(listTwo.size(),listOne.size()));
+		}
+		else if(listOne.size() < listTwo.size()) {
+			for(int num : listOne) {
+				myNewList.add(num);
+				myNewList.add(listTwo.get(index));
+				index++;
+			}
+			myNewList.addAll(listTwo.subList(listOne.size(),listTwo.size()));
+		}
+		else {
+			for(int num : listOne) {
+				myNewList.add(num);
+				myNewList.add(listTwo.get(index));
+				index++;
+			}
+		}
+		return myNewList;
+	}
 }
