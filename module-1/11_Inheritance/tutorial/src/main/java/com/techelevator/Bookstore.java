@@ -23,6 +23,14 @@ public class Bookstore {
         shoppingCart.add(twoCities);
         shoppingCart.add(threeMusketeers);
         shoppingCart.add(childhoodEnd);
+
+        Movie toyStory = new Movie("Toy Story", "G", 81, 19.99);
+        shoppingCart.add(toyStory);
+
+        Movie toyStory2 = new Movie("Toy Story 2", "G", 81, 19.99);
+        shoppingCart.add(toyStory2);
         System.out.println(shoppingCart.receipt());
+
+
     }
 }
