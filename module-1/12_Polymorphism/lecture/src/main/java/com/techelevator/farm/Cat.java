@@ -1,17 +1,19 @@
 package com.techelevator.farm;
 
-public class Cat extends FarmAnimal{
+public final class Cat extends FarmAnimal{
     public Cat() {
         super("Cat", "Meow!");
     }
 
-    @Override
-    public String getSound() {
-        if(isSleeping()) {
-            return "purrr..";
-        }
-        else {
-            return getSound();
-        }
-    }
+//cant override method since we changed it to final
+//    @Override
+//    public String getSound() {
+//        if(isSleeping()) {
+//            return "purrr..";
+//        }
+//        else {
+//            return getSound();
+//        }
+//    }
+
 }

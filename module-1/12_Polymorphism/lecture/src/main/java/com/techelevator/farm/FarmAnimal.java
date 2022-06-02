@@ -1,12 +1,14 @@
 package com.techelevator.farm;
 
-public class FarmAnimal implements Singable{
+import java.util.Locale;
+
+public abstract class FarmAnimal implements Singable{
 	private String name;
 	private String sound;
 	private boolean isSleeping;
 
 	public FarmAnimal(String name, String sound) {
-		this.name = name;
+		this.name = getClass().getSimpleName();
 		this.sound = sound;
 		isSleeping = false;
 	}
@@ -15,7 +17,7 @@ public class FarmAnimal implements Singable{
 		return name;
 	}
 
-	public String getSound() {
+	public final String getSound() {
 		if(!isSleeping){
 			return sound;
 		}
@@ -28,6 +30,10 @@ public class FarmAnimal implements Singable{
 
 	public void setSleeping(boolean sleeping) {
 		this.isSleeping = sleeping;
+	}
+
+	public String eat() {
+		return "Eating " + name.toLowerCase() + " food";
 	}
 
 	public void mount() {

@@ -11,4 +11,8 @@ public class Chicken extends FarmAnimal {
 		return new Egg();
 	}
 
+	@Override
+	public String eat() {
+		return "Eating chicken food";
+	}
 }

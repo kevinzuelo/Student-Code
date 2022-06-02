@@ -9,4 +9,8 @@ public class Sheep extends FarmAnimal implements Rideable{
         System.out.println("The Sheep has been Sheared! " + getSound() + " " + getSound());
     }
 
+    @Override
+    public String eat() {
+        return "Eating whatever sheep eat";
+    }
 }

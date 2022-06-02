@@ -10,7 +10,10 @@ public class OldMacdonald {
 		tasha.setSleeping(true);
 		Tractor billy = new Tractor();
 
-		Singable[] singables = new Singable[] { tasha, new Cow(), lucy , new Pig(), sherman, billy};
+		//Won't work because we changed FarmAnimal to an abstract class;
+		//FarmAnimal animal = new FarmAnimal("Aardvark", "grunt");
+
+		Singable[] singables = new Singable[] { tasha, new Cow(), lucy , new Pig(), sherman, billy,};
 
 		Rideable[] rideables = new Rideable[] {new Cow(),sherman, billy};
 		for (Singable singable : singables) {
@@ -40,6 +43,11 @@ public class OldMacdonald {
 			System.out.println("Only $" + sellable.getPrice());
 		}
 
+		FarmAnimal[] eaters = new FarmAnimal[]{sherman, lucy, tasha, new Cow()};
+
+		for(FarmAnimal eater: eaters) {
+			System.out.println(eater.eat());
+		}
 
 	}
 }
