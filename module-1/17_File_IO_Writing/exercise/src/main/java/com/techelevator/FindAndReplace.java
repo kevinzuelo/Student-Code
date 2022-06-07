@@ -39,6 +39,9 @@ public class FindAndReplace {
                 }
             }
         }
+        catch (FileNotFoundException e) {
+            e.getMessage();
+        }
         userInput.close();
     }
 }
