@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
@@ -107,7 +108,7 @@ public class FindAndReplaceTest {
      *
      * @param searchStr
      */
-    private void invoke(String searchStr) {
+    private void invoke(String searchStr) throws FileNotFoundException {
         String userInput = concatWithNewLineFeed(searchStr,replacementStr,srcFile.getAbsolutePath(),destFile.getAbsolutePath());
         System.setIn(new ByteArrayInputStream(userInput.getBytes()));
         FindAndReplace.main(null);
