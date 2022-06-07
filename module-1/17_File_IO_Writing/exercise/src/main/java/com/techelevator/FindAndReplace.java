@@ -40,7 +40,8 @@ public class FindAndReplace {
             }
         }
         catch (FileNotFoundException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
+            throw e;
         }
         userInput.close();
     }

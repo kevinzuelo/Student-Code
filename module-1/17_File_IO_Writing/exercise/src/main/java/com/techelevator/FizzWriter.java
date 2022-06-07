@@ -34,8 +34,8 @@ public class FizzWriter {
 			}
 		}
 		catch (Exception e) {
-			e.getMessage();
-			System.exit(0);
+			System.out.println(e.getMessage());
+			System.exit(1);
 		}
 	}
 
