@@ -1,20 +1,78 @@
 package com.games;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         System.out.println("Welcome to Pig Latin Translator");
         System.out.println("(or as we call it, Igpay Atinlay Anslatortray)");
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner consoleInput = new Scanner(System.in);
+
+        String directoryName;
+        File directory;
+
+        do {
+            System.out.print("Enter the pathname of file to read: ");
+            directoryName = consoleInput.nextLine();
+            if(directoryName.equals("")) {
+                System.exit(0);
+            }
+            directory = new File(directoryName);
+
+        } while (!directory.exists() || !directory.isDirectory());
+
+        File[] files = directory.listFiles();
+
+        for (int i = 0; i < files.length; i++) {
+            System.out.printf("%d) %s\n", i+1, files[i].getName());
+        }
+        System.out.println();
+        System.out.println("Which file do you want to use (specify a number): ");
+        int choice = Integer.parseInt(consoleInput.nextLine());
+
+        while (choice < 1 || choice > files.length) {
+            System.out.println("Options must be between 1 and " + files.length);
+            System.out.println("Which file do you want to use (specify a number): ");
+            choice = Integer.parseInt(consoleInput.nextLine());
+        }
+        System.out.println("Response is " + files[choice - 1].getName());
+        System.out.println();
+        String outputPath = files[choice - 1].getAbsolutePath();
+
+        if (outputPath.contains(".txt")) {
+            outputPath = outputPath.substring(0,outputPath.length() - 4);
+        }
+        outputPath += "-Piggy.txt";
+
+        File outputFile = new File(outputPath);
+        if(!outputFile.exists() && outputFile.createNewFile()) {
+            try (PrintWriter writer = new PrintWriter(outputFile)) {
+
+                String initialPhrase;
+                String pigLatinPhrase;
+                try (Scanner fileScanner = new Scanner(files[choice - 1])) {
+                    while (fileScanner.hasNextLine()) {
+                        initialPhrase = fileScanner.nextLine();
+                        pigLatinPhrase = convertToPigLatin(initialPhrase);
+                        writer.println(pigLatinPhrase);
+                    }
+                } catch (FileNotFoundException e) {}
+            }
+        }
 
 
-        // Ask user for line of text
-        System.out.println("Enter a phrase or sentence in English: ");
-        String initialPhrase = scanner.nextLine();
+
+
+        System.exit(0);
+
+    }
+
+    public static String convertToPigLatin(String initialPhrase) {
+        String pigLatin = "";
 
         // Break up string into words array
         String[] wordsArray = initialPhrase.split(" ");
@@ -51,16 +109,13 @@ public class Main {
 
             if (initialLen == 0)
             {
-                System.out.print(everythingElse+"lay ");
+                pigLatin += everythingElse+"lay ";
             }
             else {
-                System.out.print(everythingElse + initialLetters + "ay ");
+                pigLatin += everythingElse + initialLetters + "ay ";
             }
 
         }
-
-        System.out.println();
-
-        scanner.close();
+        return pigLatin;
     }
 }
