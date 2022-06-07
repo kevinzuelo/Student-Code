@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class FindAndReplace {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
 
         System.out.println("What is the search word?");
@@ -41,7 +41,6 @@ public class FindAndReplace {
         }
         catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
-            throw e;
         }
         userInput.close();
     }

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class FizzWriter {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		Scanner userInput = new Scanner(System.in);
 
 		System.out.print("Please enter the destination path: ");
