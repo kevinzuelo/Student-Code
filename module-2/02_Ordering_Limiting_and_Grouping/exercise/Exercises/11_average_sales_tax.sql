@@ -2,3 +2,7 @@
 -- Expected answer is around 4.9%
 -- (1 row)
 
+SELECT AVG(sales_tax) AS average_sales_tax
+FROM state;
+
+
