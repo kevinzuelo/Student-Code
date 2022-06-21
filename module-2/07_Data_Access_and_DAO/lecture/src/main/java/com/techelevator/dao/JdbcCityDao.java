@@ -43,6 +43,28 @@ public class JdbcCityDao implements CityDao {
     }
 
     @Override
+    public List<City> getCitiesBySizeAndState(String stateAbbreviation, int minPopulation, int maxPopulation) {
+        List<City> cities = new ArrayList<>();
+//        String sql;
+//        SqlRowSet results;
+//        if(minPopulation > 0 && maxPopulation > 0) {
+//            sql = "SELECT city_id, city_name, state_abbreviation, population, area FROM city WHERE state_abbreviation = ? AND population <= ?AND population >= ?;";
+//             results = jdbcTemplate.queryForRowSet(sql, stateAbbreviation, maxPopulation, minPopulation);
+//        }
+//        else if (maxPopulation > 0) {
+//            sql = "SELECT city_id, city_name, state_abbreviation, population, area FROM city WHERE state_abbreviation = ? AND population <= ?;";
+//            results = jdbcTemplate.queryForRowSet(sql, stateAbbreviation, maxPopulation, minPopulation);
+//        }
+//        else if (minPopulation > 0) {
+//            sql = "SELECT city_id, city_name, state_abbreviation, population, area FROM city WHERE state_abbreviation = ? AND population >= ?;";
+//        }
+//        else {
+//            sql = "SELECT city_id, city_name, state_abbreviation, population, area FROM city WHERE state_abbreviation = ?;";
+//        }
+        return cities;
+    }
+
+    @Override
     public City createCity(City city) {
         String sql = "INSERT INTO city (city_name, state_abbreviation, population, area) " +
                      "VALUES (?, ?, ?, ?) RETURNING city_id;";

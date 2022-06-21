@@ -10,7 +10,11 @@ public interface CityDao {
 
     List<City> getCitiesByState(String stateAbbreviation);
 
+    List<City> getCitiesBySizeAndState(String stateAbbreviation, int minPopulation, int maxPopulation);
+
+
     City createCity(City city);
+
 
     void updateCity(City city);
 
