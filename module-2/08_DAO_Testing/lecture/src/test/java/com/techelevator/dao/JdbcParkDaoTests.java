@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class JdbcParkDaoTests extends BaseDaoTests {
 
@@ -25,37 +26,53 @@ public class JdbcParkDaoTests extends BaseDaoTests {
 
     @Test
     public void getPark_returns_correct_park_for_id() {
-        Assert.fail();
+        Park park = sut.getPark(1);
+        assertParksMatch(PARK_1, park);
+        park = sut.getPark(3);
+        assertParksMatch(PARK_3, park);
     }
 
     @Test
     public void getPark_returns_null_when_id_not_found() {
-        Assert.fail();
+        Park park = sut.getPark(99);
+        Assert.assertNull(park);
     }
 
     @Test
     public void getParksByState_returns_all_parks_for_state() {
-        Assert.fail();
+        List<Park> parks = sut.getParksByState("AA");
+        Assert.assertEquals(2,parks.size());
+        assertParksMatch(PARK_1, parks.get(0));
+        assertParksMatch(PARK_3, parks.get(1));
+
     }
 
     @Test
     public void getParksByState_returns_empty_list_for_abbreviation_not_in_db() {
-        Assert.fail();
+        List<Park> parks = sut.getParksByState("XX");
+        Assert.assertEquals(0, parks.size());
     }
 
     @Test
     public void createPark_returns_park_with_id_and_expected_values() {
-        Assert.fail();
+        Park park = new Park(0, "Park 4", LocalDate.parse("1900-12-31"), 200, false);
+        Park createdPark = sut.createPark(park);
+        park.setParkId(createdPark.getParkId());
+        assertParksMatch(park, createdPark);
     }
 
     @Test
     public void created_park_has_expected_values_when_retrieved() {
-        Assert.fail();
+        Park park = new Park(0, "Park 4", LocalDate.parse("1900-12-31"), 200, false);
+        Park createdPark = sut.createPark(park);
+        park.setParkId(createdPark.getParkId());
+        createdPark = sut.getPark(park.getParkId());
+        assertParksMatch(createdPark, park);
+
     }
 
     @Test
     public void updated_park_has_expected_values_when_retrieved() {
-        Assert.fail();
     }
 
     @Test
@@ -65,7 +82,12 @@ public class JdbcParkDaoTests extends BaseDaoTests {
 
     @Test
     public void park_added_to_state_is_in_list_of_parks_by_state() {
-        Assert.fail();
+        sut.addParkToState(1, "CC");
+        List<Park> parks = sut.getParksByState("CC");
+        Assert.assertEquals(2, parks.size());
+        assertParksMatch(PARK_1, parks.get(0));
+        assertParksMatch(PARK_3, parks.get(1));
+
     }
 
     @Test
