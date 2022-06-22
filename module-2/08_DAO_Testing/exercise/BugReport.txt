@@ -1,34 +1,54 @@
 Bug 1
 -----
 Test that demonstrates problem:
+    getTimesheetsByEmployeeId
 
 Expected output:
+    list size of 2
 
 Actual output:
+    list size of 1
 
 How did you fix this bug?
-
+    changed
+        if(results.next())
+    to
+        while(results.next())
 
 Bug 2
 -----
 Test that demonstrates problem:
+    getTimesheetsByProjectId
 
 Expected output:
+    list size of 3
 
 Actual output:
+    list size of 2
 
 How did you fix this bug?
+    changed
+        "WHERE employee_id = ? "
+    to
+        "WHERE project_id = ? "
 
 
 Bug 3
 -----
 Test that demonstrates problem:
+    updateTimesheet
 
 Expected output:
+    isbillable = false
 
 Actual output:
+    isbillable = true
 
 How did you fix this bug?
+    added to sql String
+         billable = ?"
+    added to jdbcTemplate.update parameters
+        updatedTimesheet.isBillable()
 
 
 Bug 4
@@ -36,8 +56,12 @@ Bug 4
 Test that demonstrates problem:
 
 Expected output:
+    billable hours = 0
 
 Actual output:
-
+    billable hours = 2.0
 How did you fix this bug?
+    added to getBillableHours
+        "WHERE billable = true"
+
 
