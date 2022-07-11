@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+}
+
+table {
+  text-align: left;
+  position: relative;
+  border-collapse: collapse; 
+}
+th, td {
+  padding: 0.25rem;
+
+}
+
+tr.csharp th {
+  background: rgb(200,200,255);
+}
+tr.java th {
+  background: rgb(200,255,200);
+}
+tr.nlr th {
+  background: purple;
+}
+
+th {
+  background: white;
+  position: sticky; 
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+td:last-child, th:last-child {
+  text-align: right;
+}
+
+td:nth-child(3), th:nth-child(3) {
+  text-align: center;
+}
+
+
+td {
+  min-width: 15%;
+}
+
+tr.csharp td {
+  background: rgba(0,0,255,0.1);
+}
+tr.java td {
+  background: rgba(0,255,0,0.1);
+}
+tr.nlr td {
+  background: rgba(128,0,128,0.1);
+}
+
