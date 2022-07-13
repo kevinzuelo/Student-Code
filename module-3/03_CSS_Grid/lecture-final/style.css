@@ -1,4 +1,3 @@
-
 header {
     grid-area: header;
 }
@@ -8,10 +7,10 @@ nav#menu-nav {
 }
 
 main {
-    grid-area: menu;
+    grid-area: main;
 }
 
-aside#upcoming-events {
+aside {
     grid-area: upcoming-events;
 }
 
@@ -21,30 +20,27 @@ footer {
 
 .container {
     display: grid;
+    grid-template-columns: 200px 1fr 200px;
     grid-template-areas:
         "header header header"
-        "menu-nav menu upcoming-events"
-        "footer footer footer";
-    
-    grid-template-columns: 200px 3fr 250px;
-
+        "menu-nav main upcoming-events"
+        "footer footer footer"
+    ;
     height: 100vh;
     gap: 10px;
 }
 
 @media screen and (max-width: 768px) {
     .container {
-        grid-template-areas: 
+        grid-template-areas:
             "header"
             "menu-nav"
-            "menu"
+            "main"
             "upcoming-events"
             "footer";
         grid-template-columns: 1fr;
     }
 }
-
-
 
 
 
@@ -59,14 +55,14 @@ html {
     font-size: 16px;
 }
 
-a:visited {
-    color: rgb(0, 0, 238);
-}
-
 body {
     margin: 0;
     padding: 0;
     background-color: rgba(192, 192, 192, 0.35);
+}
+
+a:visited {
+    color: rgb(0, 0, 238);
 }
 
 .container {
@@ -173,31 +169,31 @@ div.food-item p {
     line-height: 2em;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
+    .sidebar h3 {
+        margin: 0.5em auto;
+    }
+
+    .sidebar li {
+        display: inline-block;
+        padding: 0 10px;
+    }
 
     aside#upcoming-events {
         text-align: center;
         font-size: 0.9em;
     }
 
-    aside#upcoming-events h3 {
-        margin: 0.5em auto;
-    }
-
-
-    aside#upcoming-events li {
-        display: inline-block;
-        padding: 0 10px;
-    }
-
     ul.sub-menu {
         display: none;
     }
-
-    nav#menu-nav ul li {
-        display: inline-block;
-        padding: 0 10px;
-    }
-
 }
 
+@media (max-width: 500px) {
+    header {
+        padding: 0 5px;
+    }
+    div.food-item img {
+        max-width: 75%;
+    }
+}
