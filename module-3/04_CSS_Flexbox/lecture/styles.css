@@ -1,4 +1,44 @@
  
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#featured > section {
+  display: flex;
+  justify-content: center;
+  
+}
+
+#featured > section article div {
+  display: flex;
+  justify-content: center;
+}
+
+#all-items > section {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#hero footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#all-items > section article {
+  display: flex;
+  justify-content: center;
+}
+
+#all-items > section article:nth-child(even) div:first-child {
+  order: 2;
+}
+
+
+
 
 
 /***** enter flexbox CSS above this line *****/
@@ -101,6 +141,18 @@ section {
 
 #all-items section article:nth-child(even) div:last-child {
   text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+  #featured > section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #featured section article:nth-child(even) {
+    border: none;
+  }
 }
 
 @media only screen and (max-width: 550px) {
