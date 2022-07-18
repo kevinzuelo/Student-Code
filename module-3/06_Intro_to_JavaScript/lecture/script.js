@@ -9,9 +9,15 @@
  * They don't have a return type and the naming convention is camel-case.
  */
 function variables() {
+
   // Declares a variable where the value cannot be changed
+  const daysPerWeek = 7;
+  console.log(`There are ${daysPerWeek} in a week`)
   // Declares a variable those value can be changed
+  let daysPerMonth = 31;
+  console.log(`There are ${daysPerMonth} in a month`)
   // Declares a variable that will always be an array
+  const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 }
 
 /**
@@ -70,14 +76,25 @@ function objects() {
       "Milton Waddams",
       "Samir Nagheenanajar",
       "Michael Bolton"
-    ]
+    ],
+    toString: function() {
+      return `${this.lastName} ${this.firstName} ${this.age}`;
+    }
+
+  
   };
 
   // Log the object
+  console.log(person.toString)
+  console.table(person);
 
   // Log the first and last name
-
+  console.log(`${person.firstName} ${person.lastName}`)
   // Log each employee
+  for(let i = 0; i< person.employees.length; i++) {
+    console.log(`Employee ${i + 1} is ${person.employees[i]}`);
+  }
+
 }
 
 /*
