@@ -28,6 +28,10 @@ function printToConsole(value) {
  * @param {number} secondParameter the second parameter to multiply
  */
 
+function multiplyTogether(first, second) {
+  return first * second;
+}
+
 /**
  * This version makes sure that no parameters are ever missing. If
  * someone calls this function without parameters, we default the
@@ -38,6 +42,10 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
+
+function multiplyNoUndefined(first = 0, second = 0) {
+  return first * second;
+}
 
 
  
@@ -86,7 +94,16 @@ function scopeTest() {
     console.log("This won't print!");
   }
 }
-
+/**
+ * 
+ * Takes the details about a person and builds a sentence from them.
+ * 
+ * @param {string} name 
+ * @param {number} age 
+ * @param {string[]} listOfQuirks 
+ * @param {string} separator 
+ * @returns 
+ */
 function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
   let description = `${name} is currently ${age} years old. Their quirks are: `;
   return description + listOfQuirks.join(separator);
@@ -100,8 +117,13 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce(
+      (sum, number) => {
+        return sum + number;
+      }
+  );
 }
+
 
 /**
  * Takes an array and returns a new array of only numbers that are
@@ -111,4 +133,10 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter) {
+    return numbersToFilter.filter(
+      (number) => {
+        return number % 3 ===0;
+      }
+    );
+}
