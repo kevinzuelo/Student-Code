@@ -5,7 +5,7 @@ let reviews = [
     reviewer: 'Malcolm Madwell',
     title: 'What a book!',
     review:
-    "It certainly is a book. I mean, I can see that. Pages kept together with glue and there's writing on it, in some language. Yes indeed, it is a book!",
+      "It certainly is a book. I mean, I can see that. Pages kept together with glue and there's writing on it, in some language. Yes indeed, it is a book!",
     rating: 3
   }
 ];
@@ -58,13 +58,40 @@ function displayReview(review) {
 }
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  // Set the product reviews page title.
+  setPageTitle();
+  // Set the product reviews page description.
+  setPageDescription();
+  // Display all of the product reviews on our page.
+  displayReviews();
 
-// Set the product reviews page title.
-setPageTitle();
-// Set the product reviews page description.
-setPageDescription();
-// Display all of the product reviews on our page.
-displayReviews();
+  const desc = document.querySelector('p.description');
+  desc.addEventListener('click', (event) => {
+    toggleDescriptionEdit(desc);
+  });
+
+  const inputDesc = document.getElementById('inputDesc');
+  inputDesc.addEventListener('keyup', (event) => {
+    if(event.key === 'Enter' || event.key === 'Escape') {
+      exitDescriptionEdit(event.target);
+    }
+  })
+  inputDesc.addEventListener('blur', (event) => {
+    exitDescriptionEdit(event.target)
+  })
+
+  const btnToggleForm = document.getElementById('btnToggleForm');
+  btnToggleForm.addEventListener('click', () => {
+    showHideForm();
+  });
+
+  const btnSaveReview = document.getElementById('btnSaveReview');
+  btnSaveReview.addEventListener('click', (event) => {
+    event.preventDefault();
+    saveReview();
+  })
+});
 
 /**
  * Hide the description and show the text box.
@@ -130,4 +157,20 @@ function resetFormValues() {
 /**
  * Save the review that was added using the add review form.
  */
-function saveReview() {}
+function saveReview() {
+  const name = document.getElementById('name');
+  const title = document.getElementById('title');
+  const rating = document.getElementById('rating');
+  const review = document.getElementById('review');
+
+  const newReview = {
+    reviewer: name.value,
+    title: title.value,
+    rating: rating.value,
+    review: review.value
+  };
+
+  reviews.unshift(newReview);
+  displayReview(newReview);
+  showHideForm();
+ }
