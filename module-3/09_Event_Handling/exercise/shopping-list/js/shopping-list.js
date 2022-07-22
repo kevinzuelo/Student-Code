@@ -13,6 +13,60 @@ const groceries = [
   { id: 10, name: 'Tea', completed: false }
 ];
 
+document.addEventListener('DOMContentLoaded', () => {
+  setPageTitle();
+  displayGroceries();
+  shoppingList = document.querySelectorAll("li");
+
+  const btnComplete = document.getElementById("toggleAll");
+
+  shoppingList.forEach((item) => {
+    item.addEventListener("click", (event)=> {
+      item.setAttribute("class", "completed");
+      item.querySelector("i").classList.add("completed");
+    });
+    item.addEventListener("dblclick", (event)=> {
+      item.classList.remove("completed");
+      item.querySelector("i").classList.remove("completed");
+
+    });
+  });
+
+  function toggleMarked(elem) {
+    if(!elem.classList.contains("completed")) {
+      elem.setAttribute("class", "completed");
+      elem.querySelector("i").classList.add("completed");
+    }
+    else {
+        elem.classList.remove("completed")
+        elem.querySelector("i").classList.remove("completed");  
+    }
+  };
+
+  btnComplete.addEventListener("click", () => {
+  
+      if(allItemsIncomplete) {
+        btnComplete.innerText = "Mark All Incomplete";
+        allItemsIncomplete = false;
+        shoppingList.forEach((item) => {
+          if(!item.classList.contains("completed")) {
+            toggleMarked(item);
+          }
+        });
+      }
+     else {
+      btnComplete.innerText = "Mark All Complete";
+      allItemsIncomplete = true;
+      shoppingList.forEach((item) => {
+        if(item.classList.contains("completed")) {
+          toggleMarked(item);
+        }
+      });
+     }
+    });
+  });
+
+
 /**
  * This function will get a reference to the title and set its text to the value
  * of the pageTitle variable that was set above.
