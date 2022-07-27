@@ -25,7 +25,7 @@
             </div>
             <div class="well">
                 <span class="amount">{{  numberOfFourStarReviews }}</span>
-                4 Star Review{{ numberOffourStarReviews === 1 ? '' : 's' }}
+                4 Star Review{{ numberOfFourStarReviews === 1 ? '' : 's' }}
             </div>
             <div class="well">
                 <span class="amount">{{  numberOfFiveStarReviews }}</span>
