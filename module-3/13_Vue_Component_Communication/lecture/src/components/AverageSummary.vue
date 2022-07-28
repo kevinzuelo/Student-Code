@@ -10,16 +10,15 @@ export default {
   name: "average-summary",
   methods: {
     updateFilter() {
-
+      this.$store.commit("UPDATE_FILTER", 0);
     }
   },
   computed: {
     averageRating() {
-      const reviews = [];
-      let sum = reviews.reduce((currentSum, review) => {
+      let sum = this.$store.state.reviews.reduce((currentSum, review) => {
         return currentSum + review.rating;
       }, 0);
-      return (sum / reviews.length).toFixed(2);
+      return (sum / this.$store.state.reviews.length).toFixed(2);
     }
   }
 };
