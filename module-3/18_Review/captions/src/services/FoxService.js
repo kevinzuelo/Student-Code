@@ -6,7 +6,7 @@ const http = axios.create({
 
 export default {
 
-  getFox() {
+  getImage() {
     return http.get('/floof').then( (response) => {
         return response.data.image;
     });

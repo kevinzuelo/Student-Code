@@ -1,6 +1,5 @@
 <template>
   <div class="card">
-      <h2>Card</h2>
       <div v-if="isLoading">
           <img src="../assets/logo.png" />
       </div>
@@ -14,32 +13,34 @@
 </template>
 
 <script>
-import foxService from '@/services/FoxService.js';
+
 
 export default {
     name: 'card-detail',
+    props: ['card'],
     data() {
         return {
             isLoading: false,
-            card: {
-                url: '',
-                caption: ''
-            }
         }
-    },
-    created() {
-        foxService.getFox().then((response) => {
-            alert(response);
-            this.card.image = response;
-        }).catch(error => {
-            alert('Ooops');
-            this.card.caption = error.response.status + ' ' + error.response.statusText;
-        })
     }
 
 }
 </script>
 
 <style>
+
+figure img {
+    max-width: 200px;
+}
+
+figcaption {
+    font-size: 1.3em;
+}
+
+figure {
+    border: 4px solid crimson;
+    border-radius: 20px;
+    max-width: 400px;
+}
 
 </style>
