@@ -31,7 +31,7 @@ export default {
   },
 
   addBoard(board) {
-    return http.post(`/boards`, board, {
+    return http.post('/boards', board, {
       headers: {'Content-Type': 'application/json'}
     });
   },
